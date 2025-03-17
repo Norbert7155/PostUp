@@ -13,6 +13,7 @@ public class Post {
     private String title;
     @Column(length = 2000)
     private String content;
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
