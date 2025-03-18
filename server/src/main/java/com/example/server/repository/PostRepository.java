@@ -78,7 +78,7 @@ public class PostRepository {
         Number generatedId = keyHolder.getKey();
         post.setId(generatedId != null ? generatedId.longValue() : null);
         return post;
-        
+
     }
 
 }
