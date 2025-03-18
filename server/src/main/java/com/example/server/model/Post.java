@@ -3,7 +3,7 @@ package com.example.server.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "posts")
+@Table(name = "post")
 public class Post {
 
     @Id
@@ -15,15 +15,15 @@ public class Post {
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "idUser")
+    private Long userId;
 
     public Post() {}
 
-    public Post(String title, String content, User user){
+    public Post(String title, String content, Long userId){
         this.title = title;
         this.content = content;
-        this.user = user;
+        this.userId = userId;
     }
 
 
@@ -51,12 +51,11 @@ public class Post {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public Long getUserId() {
+        return userId;
     }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
 }
