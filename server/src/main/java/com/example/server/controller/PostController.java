@@ -50,6 +50,7 @@ public class PostController {
         return ResponseEntity.ok(updatePost);
     }
 
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id){
         Post post = postRepository.findById(id);
         if(post == null){
