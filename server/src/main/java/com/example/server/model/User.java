@@ -5,22 +5,12 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "user")
-
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String username;
 
     private String password;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();
-
 
     public User() {}
 
@@ -53,12 +43,6 @@ public class User {
         this.password = password;
     }
 
-    public List<Post> getPosts() {
-        return posts;
-    }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
 
 }
