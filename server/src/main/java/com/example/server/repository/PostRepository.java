@@ -1,7 +1,9 @@
 package com.example.server.repository;
 
 
+import com.example.server.controller.UserController;
 import com.example.server.model.Post;
+import com.example.server.service.PostService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
@@ -89,6 +93,10 @@ public class PostRepository {
         jdbcTemplate.update(sql,id);
     }
 
+    public List<Post> getAllPostByUserId(Long userId){
+        String sql = "SELECT id, title, content, userId FROM post WHERE userId = ?";
+        return jdbcTemplate.query(sql, postRowMapper, userId);
+    }
 
 
 }
