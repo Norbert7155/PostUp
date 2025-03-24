@@ -44,20 +44,20 @@ public class UserRepository {
     }
 
     public User findByUsername(String username){
-        String sql = "SELECT id, username, passwrod FROM user WHERE username = ?";
+        String sql = "SELECT id, username, password FROM user WHERE username = ?";
         List<User> result = jdbcTemplate.query(sql, userRowMapper, username);
         return  result.isEmpty() ? null : result.get(0);
     }
 
     public User save(User user) {
         if (user.getId() == null) {
-            return insert(user);
+            return createUser(user);
         } else {
-            return update(user);
+            return updateUser(user);
         }
     }
 
-    public User insert(User user){
+    public User createUser(User user){
         KeyHolder keyHolder = new GeneratedKeyHolder();
         String sql = "INSERT INTO user (username, password) VALUES (?, ?)";
 
@@ -73,7 +73,7 @@ public class UserRepository {
         return user;
     }
 
-    public User update(User user){
+    public User updateUser(User user){
         String sql = "UPDATE user SET username = ?, password = ? WHERE id = ?";
         jdbcTemplate.update(sql, user.getUsername() , user.getPassword(), user.getId() );
         return user;

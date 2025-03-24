@@ -32,10 +32,19 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         User user = userRepository.findById(id);
         return ResponseEntity.ok(user);
+    }
+
+    @GetMapping("/username/{username}")
+    public  ResponseEntity<User> findByUsername(@PathVariable String username){
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return  ResponseEntity.ok(user);
     }
 
     @PostMapping
