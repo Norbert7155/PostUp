@@ -13,6 +13,7 @@ const StyledFooter = styled.footer`
     background-color: #333;
     color: #fff;
     padding: 10px;
+    z-index: 100000000;
 `;
 
 const Footer = () => {

@@ -15,6 +15,8 @@ const StyledPostConteiner = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin:90px 400px;
+    z-index: 1;
 `;
 
 const Posts:React.FC = () => {
@@ -22,18 +24,36 @@ const Posts:React.FC = () => {
     const [postsData, setPostsData] = useState<PostType[]>([]);
 
     useEffect(() => {
-        fetch("/api/post")
-          .then(response => {
-            if (!response.ok) {
-              throw new Error("Błąd sieci: " + response.status);
+        const fetchPosts = async () => {
+            try{
+                const res = await fetch("/api/post");
+                if(!res.ok){
+                    throw new Error("Network response was not ok");
+                }
+                const posts = await res.json();
+                setPostsData(posts);
             }
-            return response.json();
-          })
-          .then((data: PostType[]) => setPostsData(data))
-          .catch(error =>
-            console.error("Wystąpił błąd przy pobieraniu danych:", error)
-          );
-      }, []);
+            catch(err){
+                console.error("Wystąpił błąd przy pobieraniu danych:", err);
+                
+            }
+        };
+
+        fetchPosts();
+
+        const intervalId = setInterval(() => {
+            fetchPosts();
+          }, 20000); // odświeżanie co 20s
+        
+          return () => clearInterval(intervalId);
+    }, []);
+
+
+  
+
+
+
+
 
     return (
         <Layout>

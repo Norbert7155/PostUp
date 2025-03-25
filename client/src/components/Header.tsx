@@ -10,7 +10,8 @@ const StyledHeader = styled.header`
     flex-direction:row;
     justify-content:space-between; 
     align-items:center;
-    z-index: 100;
+    z-index: 100000000;
+    background-color: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 `;
 
