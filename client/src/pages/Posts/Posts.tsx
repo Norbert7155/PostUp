@@ -22,21 +22,18 @@ const Posts:React.FC = () => {
     const [postsData, setPostsData] = useState<PostType[]>([]);
 
     useEffect(() => {
-        fetch("/post")
-        .then(response => {
+        fetch("/api/post")
+          .then(response => {
             if (!response.ok) {
               throw new Error("Błąd sieci: " + response.status);
             }
-            return response.text();
-            console.log(response);
+            return response.json();
           })
-          .then(text =>{
-            console.log(text);
-            const data = JSON.parse(text);
-            setPostsData(data);
-          })
-          .catch(error => console.error("Wystąpił błąd przy pobieraniu danych:", error));
-    }, []);
+          .then((data: PostType[]) => setPostsData(data))
+          .catch(error =>
+            console.error("Wystąpił błąd przy pobieraniu danych:", error)
+          );
+      }, []);
 
     return (
         <Layout>
