@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import User from './User';
+import Layout from '../../components/Layout';
 
 //dodaj typ
 
-const StyledPostsContainer = styled.div`
+const StyledUsersContainer = styled.div`
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -12,7 +13,7 @@ const StyledPostsContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 100px;
     padding: 20px;
    
 `;
@@ -40,13 +41,15 @@ const Users = () => {
     }, []);
 
     return (
-        <StyledPostsContainer>
-            {
-                users.map((user) =>(
-                    <User key={user.id} id={user.id} username={user.username}/>
-                ))
-            }
-        </StyledPostsContainer>
+        <Layout>
+            <StyledUsersContainer>
+                {
+                    users.map((user) =>(
+                        <User key={user.id} id={user.id} username={user.username}/>
+                    ))
+                }
+            </StyledUsersContainer>
+        </Layout>
     );
 };
 export default Users;

@@ -48,13 +48,6 @@ const Posts:React.FC = () => {
           return () => clearInterval(intervalId);
     }, []);
 
-
-  
-
-
-
-
-
     return (
         <Layout>
             <StyledPostConteiner>
