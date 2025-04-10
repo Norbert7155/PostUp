@@ -10,6 +10,8 @@ const StyledPostConteiner = styled.div`
     margin:10px 0px;
     z-index: 1;
 
+    
+
 `;
 
 const StyledPostHeader = styled.div`

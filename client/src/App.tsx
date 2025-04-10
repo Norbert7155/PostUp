@@ -2,7 +2,8 @@ import React from 'react';
 
 import { BrowserRouter , Route, Routes } from 'react-router-dom';
 import Posts from './pages/Posts/Posts';
-import Login from './Login/Login';
+import Login from './pages/Login/Login';
+import Users from './pages/Users/Users';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Route path="/" element={<Login/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/post" element={<Posts/>}/>
+        <Route path='/users' element={<Users/>}/>
       </Routes>
     </BrowserRouter>
   );
