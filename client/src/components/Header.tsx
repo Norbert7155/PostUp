@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
     position: fixed;
@@ -29,6 +30,22 @@ const StyledUl = styled.ul`
     li:last-child{
         margin-right:0;
     }
+    Link{
+        text-decoration:none;
+        color:black;
+        cursor:pointer;
+    }
+    a, a:visited, a:active, a:focus {
+        color: black;               
+        text-decoration: none;     
+        outline: none;           
+        -webkit-tap-highlight-color: transparent; 
+    }
+    a:hover{
+        color: #007BFF; 
+    }
+    Link:hover{
+        color: #007BFF;}
 `;
 
 const Header = () => {
@@ -37,9 +54,9 @@ const Header = () => {
         <StyledHeader>
             <h1>PostUp</h1>
             <StyledUl>
-                <li>Posts</li>
-                <li>Users</li>
-                <li>Login</li>
+                <Link to="/post"><li>Posts</li></Link>
+                <Link to="/users"><li>Users</li></Link>
+                <Link to="/login"><li>Login</li></Link>
             </StyledUl>
         </StyledHeader>
     )
