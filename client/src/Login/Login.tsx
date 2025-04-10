@@ -46,6 +46,9 @@ const Login = () => {
         h1{
             margin-bottom: 40px;
         }
+        input{
+            border-radius: 5px;
+        }
     `;
 
     return (
